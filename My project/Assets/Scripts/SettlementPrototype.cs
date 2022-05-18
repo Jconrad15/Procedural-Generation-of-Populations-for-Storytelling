@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettlementPrototype : MonoBehaviour
+[CreateAssetMenu(fileName = "settlement",
+    menuName = "ScriptableObjects/SettlementPrototype", order = 2)]
+public class SettlementPrototype: ScriptableObject
 {
-    public List<District> districts;
+    public List<DistrictPrototypes> districts;
+    public int minDistricts;
+    public int maxDistricts;
 }

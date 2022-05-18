@@ -1,9 +1,7 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-public enum RelationType { a,b, c };
-
+[Serializable]
 public class Relation
 {
     public RelationType type;
@@ -15,5 +13,5 @@ public class Relation
     public List<Resource> resources;
 
     // Optional relation's attitude
-    public float attitude;
+    public Attitude attitude;
 }

@@ -11,6 +11,9 @@ public class GenerationController : MonoBehaviour
     [SerializeField]
     private int settlementCount;
 
+    [SerializeField]
+    private SettlementPrototype[] settlementPrototypes;
+
     void Start()
     {
         // First generate the map
@@ -25,19 +28,27 @@ public class GenerationController : MonoBehaviour
         Landscape landscape = new Landscape(
             width, height, hmg.HeightMap, ttmg.TerrainTypeMap);
 
-        // Generate initial settlements
+        // Generate initial settlements at random locations
         Settlement[] settlements = new Settlement[settlementCount];
         for (int i = 0; i < settlementCount; i++)
         {
-            SettlementPrototype p = new SettlementPrototype();
-            settlements[i] = new Settlement(Vector2.zero, p);
+            settlements[i] =
+                new Settlement(RandomLocation(), settlementPrototypes[0]);
         }
 
+        // Determine where the settlements should go
+        settlements = EvolutionaryAlgorithm
+            .DetermineSettlementLocations(landscape, settlements);
+
+
+
 
     }
 
-    void Update()
+    private Vector2 RandomLocation()
     {
-        
+        return new Vector2(Random.Range(0, width), Random.Range(0, height));
     }
+
+
 }

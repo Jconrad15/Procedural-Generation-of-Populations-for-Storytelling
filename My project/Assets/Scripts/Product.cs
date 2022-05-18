@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 /// <summary>
 /// A product is a resource function.
 /// </summary>
+
+[Serializable]
 public class Product
 {
     public ResourceFunctionType Type;
