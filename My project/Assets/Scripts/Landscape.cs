@@ -18,4 +18,18 @@ public class Landscape
         this.heightMap = heightMap;
         this.terrainTypeMap = terrainTypeMap;
     }
+
+    public TerrainType GetTerrainTypeAtPos((int,int) position)
+    {
+        int index = PositionToIndex(position);
+        return terrainTypeMap[index];
+    }
+
+    private int PositionToIndex((int,int) position)
+    {
+        return position.Item1 + (width * position.Item2);
+    }
+
+    //public float GetDistanceToTerrainType()
+
 }

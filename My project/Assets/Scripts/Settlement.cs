@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Settlement
 {
-    public Vector2 position;
+    public (int, int) position;
     public List<District> districts;
     public List<Settlement> relatedSettlements;
     public SettlementPrototype prototype;
 
-    public Settlement(Vector2 position, SettlementPrototype prototype)
+    public Settlement((int, int) position, SettlementPrototype prototype)
     {
         this.position = position;
         districts = new List<District>();
@@ -17,7 +17,7 @@ public class Settlement
         this.prototype = prototype;
     }
 
-    public Settlement(Vector2 position, List<District> districts,
+    public Settlement((int, int) position, List<District> districts,
         List<Settlement> relatedSettlements, SettlementPrototype prototype)
     {
         this.position = position;

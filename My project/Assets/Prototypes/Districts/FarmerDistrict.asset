@@ -26,7 +26,8 @@ MonoBehaviour:
       maximumDistance: 150
     relations:
     - type: 0
-      preferredDistance: 0
-      maximumDistance: 0
-      resources: []
-      attitude: 0
+      preferredDistance: 100
+      maximumDistance: 200
+      resources:
+      - type: 0
+      attitude: 2

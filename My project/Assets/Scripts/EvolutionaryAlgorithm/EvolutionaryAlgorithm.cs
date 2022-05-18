@@ -14,7 +14,7 @@ public static class EvolutionaryAlgorithm
 
         // int[,] array2Da = new int[4, 2] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
         float[,] scores = new float[settlements.Length, maxIterations];
-        Vector2[,] locations = new Vector2[settlements.Length, maxIterations];
+        (int, int)[,] locations = new (int, int)[settlements.Length, maxIterations];
 
         // For all iterationss
         for (int i = 0; i < maxIterations; i++)
@@ -39,8 +39,24 @@ public static class EvolutionaryAlgorithm
 
     private static float DetermineScore(Landscape l, Settlement s)
     {
-        
-        return 0;
+        float score = 0;
+
+        TerrainType tt = l.GetTerrainTypeAtPos(s.position);
+
+        // Lower score if in water
+        if (tt == TerrainType.Water)
+        {
+            score -= 1;
+        }
+
+        // Lower score if too few or too many districts compared to prototype
+        if (s.districts.Count < s.prototype.minDistricts ||
+            s.districts.Count > s.prototype.maxDistricts)
+        {
+            score -= 1;
+        }
+
+        return score;
     }
 
 }
