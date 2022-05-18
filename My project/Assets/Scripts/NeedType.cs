@@ -1,0 +1,1 @@
+public enum NeedType { Food, Metal };
